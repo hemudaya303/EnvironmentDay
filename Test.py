@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import sqlite3
 import os
-import plotly.express as px
+# import plotly.express as px
 
 DB_FILE = "leaderboard.db"
 
@@ -85,9 +85,9 @@ if username:
     df = pd.DataFrame(data, columns=["ID", "Username", "Name", "Per Day", "Per Year", "Per Year (kg)"])
     st.dataframe(df)
 
-    if st.button("Show Chart"):
-        fig = px.bar(df, x="Name", y="Per Year (kg)", color="Name", title="Plastic Usage per Year (kg)")
-        st.plotly_chart(fig)
+    # if st.button("Show Chart"):
+    #     fig = px.bar(df, x="Name", y="Per Year (kg)", color="Name", title="Plastic Usage per Year (kg)")
+    #     st.plotly_chart(fig)
 
     delete_id = st.number_input("Enter ID to delete", step=1, min_value=1)
     if st.button("Delete Entry"):
