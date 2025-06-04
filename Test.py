@@ -1,6 +1,23 @@
 import streamlit as st
 import smtplib
+import pandas as pd
+import os
+from google.cloud import firestore
+# Initialize Firestore client
+db = firestore.Client()
 
+# Firestore collection name
+LEADERBOARD_COLLECTION = "plastic_leaderboard"
+
+def add_entry_to_firestore(entry):
+    db.collection(LEADERBOARD_COLLECTION).add(entry)
+
+def get_leaderboard_from_firestore():
+    docs = db.collection(LEADERBOARD_COLLECTION).stream()
+    leaderboard = []
+    for doc in docs:
+        leaderboard.append(doc.to_dict())
+    return leaderboard
 st.title("Welcome to My Streamlit App")
 st.write("This is a simple Streamlit application.")
 
@@ -69,3 +86,34 @@ if name:
             }
             for entry in sorted_leaderboard
         ])
+        # Define a CSV file to store leaderboard data
+        LEADERBOARD_CSV = "leaderboard.csv"
+
+        # Save leaderboard to CSV
+        def save_leaderboard(leaderboard):
+            df = pd.DataFrame(leaderboard)
+            df.to_csv(LEADERBOARD_CSV, index=False)
+
+        # Load leaderboard from CSV
+        def load_leaderboard():
+            if os.path.exists(LEADERBOARD_CSV):
+                return pd.read_csv(LEADERBOARD_CSV).to_dict(orient="records")
+            return []
+
+        # On first run, load leaderboard from CSV
+        if "loaded_leaderboard" not in st.session_state:
+            st.session_state.leaderboard = load_leaderboard()
+            st.session_state.loaded_leaderboard = True
+
+        # Save leaderboard after new entry
+        if st.session_state.leaderboard:
+            save_leaderboard(st.session_state.leaderboard)
+        # To make this app accessible to everyone, you need to deploy it to a public server.
+        # Popular options include Streamlit Community Cloud (https://streamlit.io/cloud), Heroku, or any cloud VM.
+        # Steps for Streamlit Community Cloud:
+        # 1. Push this code to a public GitHub repository.
+        # 2. Go to https://streamlit.io/cloud and sign in.
+        # 3. Click "New app", select your repo and branch, and set the file path to Test.py.
+        # 4. Deploy the app. Share the generated URL with others.
+
+        st.info("To make this dashboard public, deploy it using Streamlit Community Cloud or another hosting service. All leaderboard entries will be visible to everyone accessing the app.")
