@@ -364,38 +364,38 @@ with st.container():
                 st.dataframe(df, use_container_width=True)
 
     st.info("For database sync, upload/download the file 'leaderboard.db' to/from your Google Drive manually.")
-    st.markdown(
-        """
-        <style>
-        .header-container {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
-        .logo-left {
-            flex: 0 0 auto;
-            margin-right: 20px;
-        }
-        .title-right {
-            flex: 1 1 auto;
-            text-align: right;
-        }
-        .leaderboard-container {
-            display: flex;
-            justify-content: flex-end;
-            margin-top: 30px;
-        }
-        </style>
-        <div class="header-container">
-            <div class="logo-left">
-                <img src="https://aciesglobal.com/wp-content/uploads/2022/06/Acies-Logo.png" alt="Acies Global" height="60">
-            </div>
-            <div class="title-right">
-                <h2 style="color:#22543d;margin-bottom:0;">Green Energy Plastic Tracker</h2>
-                <p style="color:#22543d;font-weight:bold;">Powered by Acies Global</p>
-            </div>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
+    # st.markdown(
+    #     """
+    #     <style>
+    #     .header-container {
+    #         display: flex;
+    #         align-items: flex-start;
+    #         justify-content: space-between;
+    #         margin-bottom: 20px;
+    #     }
+    #     .logo-left {
+    #         flex: 0 0 auto;
+    #         margin-right: 20px;
+    #     }
+    #     .title-right {
+    #         flex: 1 1 auto;
+    #         text-align: right;
+    #     }
+    #     .leaderboard-container {
+    #         display: flex;
+    #         justify-content: flex-end;
+    #         margin-top: 30px;
+    #     }
+    #     </style>
+    #     <div class="header-container">
+    #         <div class="logo-left">
+    #             <img src="https://aciesglobal.com/wp-content/uploads/2022/06/Acies-Logo.png" alt="Acies Global" height="60">
+    #         </div>
+    #         <div class="title-right">
+    #             <h2 style="color:#22543d;margin-bottom:0;">Green Energy Plastic Tracker</h2>
+    #             <p style="color:#22543d;font-weight:bold;">Powered by Acies Global</p>
+    #         </div>
+    #     </div>
+    #     """,
+    #     unsafe_allow_html=True
+    # )
