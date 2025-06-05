@@ -40,10 +40,10 @@ def get_leaderboard():
     conn.close()
     return rows
 
-def delete_entry(entry_id):
+def delete_entry():
     conn = sqlite3.connect(DB_FILE)
     c = conn.cursor()
-    c.execute("DELETE FROM leaderboard WHERE id=?", (entry_id,))
+    c.execute("DELETE FROM leaderboard")
     conn.commit()
     conn.close()
 
@@ -264,8 +264,8 @@ init_db()
 # Session State
 if "name_entered" not in st.session_state:
     st.session_state.name_entered = False
-if "show_leaderboard" not in st.session_state:
-    st.session_state.show_leaderboard = False
+# if "show_leaderboard" not in st.session_state:
+#     st.session_state.show_leaderboard = False
 if "user_name" not in st.session_state:
     st.session_state.user_name = ""
 
@@ -363,7 +363,10 @@ with st.container():
                 df = pd.DataFrame(data, columns=["ID", "Username", "Name", "Per Day", "Per Year", "Per Year (kg)"])
                 st.dataframe(df, use_container_width=True)
 
-    st.info("For database sync, upload/download the file 'leaderboard.db' to/from your Google Drive manually.")
+    if st.button("Delete Entry"):
+        delete_entry()
+        st.success("Entry deleted. Please refresh.")
+
     # st.markdown(
     #     """
     #     <style>
