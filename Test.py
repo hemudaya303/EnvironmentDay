@@ -35,7 +35,7 @@ def add_entry(username, entry):
 def get_leaderboard():
     conn = sqlite3.connect(DB_FILE)
     c = conn.cursor()
-    c.execute("SELECT id, username, name, per_day, per_year, per_year_kg FROM leaderboard order by per_year_kg DESC")
+    c.execute("SELECT id, username, name, per_day, per_year, per_year_kg FROM leaderboard order by per_year_kg")
     rows = c.fetchall()
     conn.close()
     return rows
