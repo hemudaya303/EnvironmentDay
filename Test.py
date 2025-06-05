@@ -1,29 +1,3 @@
-st.markdown(
-    """
-    <style>
-    body {
-        background: linear-gradient(135deg, #a8e063 0%, #56ab2f 100%);
-        color: #222;
-    }
-    .stApp {
-        background: linear-gradient(135deg, #a8e063 0%, #56ab2f 100%);
-    }
-    .css-18e3th9 {
-        background: rgba(255,255,255,0.8);
-        border-radius: 10px;
-        padding: 20px;
-    }
-    </style>
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
-        <div>
-            <h2 style="color:#22543d;margin-bottom:0;">Green Energy Plastic Tracker</h2>
-            <p style="color:#22543d;font-weight:bold;">Powered by Acies Global</p>
-        </div>
-        <img src="https://aciesglobal.com/wp-content/uploads/2022/06/Acies-Logo.png" alt="Acies Global" height="60">
-    </div>
-    """,
-    unsafe_allow_html=True
-)
 import streamlit as st
 import pandas as pd
 import sqlite3
@@ -122,3 +96,29 @@ if username:
         st.success("Entry deleted. Please refresh.")
 
     st.info("For database sync, upload/download the file 'leaderboard.db' to/from your Google Drive manually.")
+    st.markdown(
+    """
+    <style>
+    body {
+        background: linear-gradient(135deg, #a8e063 0%, #56ab2f 100%);
+        color: #222;
+    }
+    .stApp {
+        background: linear-gradient(135deg, #a8e063 0%, #56ab2f 100%);
+    }
+    .css-18e3th9 {
+        background: rgba(255,255,255,0.8);
+        border-radius: 10px;
+        padding: 20px;
+    }
+    </style>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+        <div>
+            <h2 style="color:#22543d;margin-bottom:0;">Green Energy Plastic Tracker</h2>
+            <p style="color:#22543d;font-weight:bold;">Powered by Acies Global</p>
+        </div>
+        <img src="https://aciesglobal.com/wp-content/uploads/2022/06/Acies-Logo.png" alt="Acies Global" height="60">
+    </div>
+    """,
+    unsafe_allow_html=True
+)
