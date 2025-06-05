@@ -356,17 +356,16 @@ with st.container():
                 st.success("Entry added!")
                 
 
-        with tab2:
-            st.session_state.show_leaderboard = True
-            if st.session_state.show_leaderboard:
-                st.subheader("🏆 Leaderboard")
-                data = get_leaderboard()
-                df = pd.DataFrame(data, columns=["ID", "Username", "Name", "Per Day", "Per Year", "Per Year (kg)"])
-                st.dataframe(df, use_container_width=True)
+    st.session_state.show_leaderboard = True
+    if st.session_state.show_leaderboard:
+        st.subheader("🏆 Leaderboard")
+        data = get_leaderboard()
+        df = pd.DataFrame(data, columns=["ID", "Username", "Name", "Per Day", "Per Year", "Per Year (kg)"])
+        st.dataframe(df, use_container_width=True)
 
-    if st.button("Delete Entry"):
-        delete_entry()
-        st.success("Entry deleted. Please refresh.")
+    # if st.button("Delete Entry"):
+    #     delete_entry()
+    #     st.success("Entry deleted. Please refresh.")
 
     # st.markdown(
     #     """
