@@ -65,6 +65,7 @@ if username:
         }
 
         st.subheader("Enter your daily usage for each product:")
+
         usage = {}
         for product, weight in products.items():
             usage[product] = st.number_input(f"{product} (avg weight: {weight}g)", min_value=0, step=1)
@@ -73,11 +74,11 @@ if username:
         total_per_year = total_per_day * 365
         total_per_year_kg = total_per_year / 1000
 
-        st.write(f"Daily: {{total_per_day:.2f}}g, Yearly: {{total_per_year:.2f}}g / {{total_per_year_kg:.2f}}kg")
+        st.write(f"Daily: {total_per_day:.2f}g, Yearly: {total_per_year:.2f}g / {total_per_year_kg:.2f}kg")
 
         if st.button("Submit"):
-            add_entry(username, {{"name": name, "per_day": total_per_day,
-                                 "per_year": total_per_year, "per_year_kg": total_per_year_kg}})
+            add_entry(username, {"name": name, "per_day": total_per_day,
+                                 "per_year": total_per_year, "per_year_kg": total_per_year_kg})
             st.success("Entry added!")
 
     st.subheader("Leaderboard")
