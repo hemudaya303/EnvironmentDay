@@ -65,7 +65,7 @@ if username:
         }
 
         st.subheader("Enter your daily usage for each product:")
-        usage = {{}}
+        usage = {}
         for product, weight in products.items():
             usage[product] = st.number_input(f"{product} (avg weight: {weight}g)", min_value=0, step=1)
 
