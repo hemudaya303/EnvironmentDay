@@ -354,9 +354,10 @@ with st.container():
                     }
                 )
                 st.success("Entry added!")
-                st.session_state.show_leaderboard = True
+                
 
         with tab2:
+            st.session_state.show_leaderboard = True
             if st.session_state.show_leaderboard:
                 st.subheader("🏆 Leaderboard")
                 data = get_leaderboard()
