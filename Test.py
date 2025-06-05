@@ -96,28 +96,37 @@ if username:
         st.success("Entry deleted. Please refresh.")
 
     st.info("For database sync, upload/download the file 'leaderboard.db' to/from your Google Drive manually.")
-    st.markdown(
+st.markdown(
     """
     <style>
-    body {
-        background: linear-gradient(135deg, #a8e063 0%, #56ab2f 100%);
-        color: #222;
+    .header-container {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        margin-bottom: 20px;
     }
-    .stApp {
-        background: linear-gradient(135deg, #a8e063 0%, #56ab2f 100%);
+    .logo-left {
+        flex: 0 0 auto;
+        margin-right: 20px;
     }
-    .css-18e3th9 {
-        background: rgba(255,255,255,0.8);
-        border-radius: 10px;
-        padding: 20px;
+    .title-right {
+        flex: 1 1 auto;
+        text-align: right;
+    }
+    .leaderboard-container {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 30px;
     }
     </style>
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
-        <div>
+    <div class="header-container">
+        <div class="logo-left">
+            <img src="https://aciesglobal.com/wp-content/uploads/2022/06/Acies-Logo.png" alt="Acies Global" height="60">
+        </div>
+        <div class="title-right">
             <h2 style="color:#22543d;margin-bottom:0;">Green Energy Plastic Tracker</h2>
             <p style="color:#22543d;font-weight:bold;">Powered by Acies Global</p>
         </div>
-        <img src="https://aciesglobal.com/wp-content/uploads/2022/06/Acies-Logo.png" alt="Acies Global" height="60">
     </div>
     """,
     unsafe_allow_html=True
