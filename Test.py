@@ -35,7 +35,7 @@ def add_entry(username, entry):
 def get_leaderboard():
     conn = sqlite3.connect(DB_FILE)
     c = conn.cursor()
-    c.execute("SELECT id, username, name, per_day, per_year, per_year_kg FROM leaderboard")
+    c.execute("SELECT id, username, name, per_day, per_year, per_year_kg FROM leaderboard order by per_year_kg DESC")
     rows = c.fetchall()
     conn.close()
     return rows
@@ -360,7 +360,7 @@ with st.container():
     if st.session_state.show_leaderboard:
         st.subheader("🏆 Leaderboard")
         data = get_leaderboard()
-        df = pd.DataFrame(data, columns=["ID", "Username", "Name", "Per Day", "Per Year", "Per Year (kg)"])
+        df = pd.DataFrame(data, columns=["ID", "Username", "Name", "Per Day(g)", "Per Year(g)", "Per Year (kg)"])
         st.dataframe(df, use_container_width=True)
 
     # if st.button("Delete Entry"):
